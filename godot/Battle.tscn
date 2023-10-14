@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/parallax-forest-lights.png" type="Texture" id=1]
+[ext_resource path="res://Assets/parallax-forest-middle-trees.png" type="Texture" id=2]
+[ext_resource path="res://Assets/parallax-forest-back-trees.png" type="Texture" id=3]
+[ext_resource path="res://Assets/parallax-forest-front-trees.png" type="Texture" id=4]
+[ext_resource path="res://FightBackgroundScrolling.gd" type="Script" id=5]
+
+[node name="Battle" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 5 )
+
+[node name="Trees1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1018, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Trees1"]
+position = Vector2( 512.575, 301.75 )
+scale = Vector2( 3.75312, 3.75312 )
+texture = ExtResource( 3 )
+offset = Vector2( 0.432, 0 )
+
+[node name="Lights2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1018, 0 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/Lights2"]
+position = Vector2( 514.85, 301.5 )
+scale = Vector2( 3.75625, 3.75625 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.21, 0 )
+
+[node name="Trees3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1018, 0 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/Trees3"]
+position = Vector2( 509.85, 301.5 )
+scale = Vector2( 3.75625, 3.75625 )
+texture = ExtResource( 2 )
+
+[node name="bgStatic" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 511, 301 )
+scale = Vector2( 3.75625, 3.75625 )
+texture = ExtResource( 4 )
