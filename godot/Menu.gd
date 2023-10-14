@@ -21,3 +21,8 @@ func _on_Btn_Login_pressed():
 	username = get_node("Username").text
 	password = get_node("Password").text
 	print("Username: ", username, "   Password: ", password)
+	## Add authentication logic here
+	var authenticationSuccess = true
+	if authenticationSuccess:
+		get_tree().change_scene("res://Scenes/Main.tscn")
+	
