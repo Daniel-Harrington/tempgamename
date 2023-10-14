@@ -130,6 +130,10 @@ script = ExtResource( 10 )
 
 [node name="TweenDown" type="Tween" parent="Btn_Signup"]
 
+[connection signal="focus_entered" from="Username" to="Username" method="_on_Username_focus_entered"]
+[connection signal="focus_entered" from="Password" to="Password" method="_on_Password_focus_entered"]
+[connection signal="focus_entered" from="Email" to="Email" method="_on_Email_focus_entered"]
+[connection signal="pressed" from="Btn_Login" to="." method="_on_Btn_Login_pressed"]
 [connection signal="tween_completed" from="Btn_Login/TweenOpacity" to="Email" method="_on_TweenOpacity_tween_completed"]
 [connection signal="tween_completed" from="Btn_Signup/TweenDown" to="." method="_on_TweenDown_tween_completed"]
 [connection signal="tween_completed" from="Btn_Signup/TweenDown" to="Btn_Signup" method="_on_TweenDown_tween_completed"]

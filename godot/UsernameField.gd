@@ -1,6 +1,7 @@
 extends LineEdit
 
-func _gui_input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+var initialfocus = true
+func _on_Username_focus_entered():
+	if initialfocus:
 		text = "" # Clear the text
-
+		initialfocus = false
