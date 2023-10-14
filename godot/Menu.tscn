@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://FightBackgroundScrolling.gd" type="Script" id=1]
 [ext_resource path="res://Assets/parallax-forest-lights.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Menu.gd" type="Script" id=7]
 [ext_resource path="res://PasswordField.gd" type="Script" id=8]
 [ext_resource path="res://UsernameField.gd" type="Script" id=9]
+[ext_resource path="res://Btn_Signup.gd" type="Script" id=10]
+[ext_resource path="res://Btn_Login.gd" type="Script" id=11]
+[ext_resource path="res://EmailField.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Running"
@@ -94,18 +97,40 @@ margin_bottom = 307.0
 text = "Password"
 script = ExtResource( 8 )
 
-[node name="Login" type="Button" parent="."]
+[node name="Email" type="LineEdit" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 357.0
+margin_top = 321.0
+margin_right = 624.0
+margin_bottom = 365.0
+text = "Email"
+script = ExtResource( 12 )
+
+[node name="TweenVisible" type="Tween" parent="Email"]
+
+[node name="Btn_Login" type="Button" parent="."]
 margin_left = 359.0
 margin_top = 321.0
 margin_right = 484.0
 margin_bottom = 361.0
 rect_pivot_offset = Vector2( 97, 20 )
 text = "Login"
+script = ExtResource( 11 )
 
-[node name="Signup" type="Button" parent="."]
-margin_left = 490.0
+[node name="TweenOpacity" type="Tween" parent="Btn_Login"]
+
+[node name="Btn_Signup" type="Button" parent="."]
+margin_left = 489.0
 margin_top = 321.0
-margin_right = 615.0
+margin_right = 614.0
 margin_bottom = 361.0
 rect_pivot_offset = Vector2( 97, 20 )
 text = "Signup"
+script = ExtResource( 10 )
+
+[node name="TweenDown" type="Tween" parent="Btn_Signup"]
+
+[connection signal="tween_completed" from="Btn_Login/TweenOpacity" to="Email" method="_on_TweenOpacity_tween_completed"]
+[connection signal="tween_completed" from="Btn_Signup/TweenDown" to="." method="_on_TweenDown_tween_completed"]
+[connection signal="tween_completed" from="Btn_Signup/TweenDown" to="Btn_Signup" method="_on_TweenDown_tween_completed"]
+[connection signal="tween_started" from="Btn_Signup/TweenDown" to="Btn_Login" method="_on_TweenDown_tween_started"]
