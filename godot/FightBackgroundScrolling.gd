@@ -4,9 +4,9 @@ var screen_width = 1024  # Adjust with your screen width
 
 # Define properties for each ParallaxLayer's scroll speed
 var layer_speeds = {
-	"Trees1": Vector2(150, 0),  # Adjust the scroll speed as needed
-	"Lights2": Vector2(100, 0),  # Adjust the scroll speed as needed
-	"Trees3": Vector2(80, 0),  # Adjust the scroll speed as needed
+	"Trees1": Vector2(100, 0),  # Adjust the scroll speed as needed
+	"Lights2": Vector2(80, 0),  # Adjust the scroll speed as needed
+	"Trees3": Vector2(50, 0),  # Adjust the scroll speed as needed
 	# Add more layers and speeds as needed
 }
 
