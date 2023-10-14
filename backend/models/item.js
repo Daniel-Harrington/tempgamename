@@ -19,3 +19,6 @@ export const Item = sequelize.define("Item", {
     allowNull: false,
   },
 });
+
+Item.belongsTo(Inventory);
+Inventory.hasMany(Item);

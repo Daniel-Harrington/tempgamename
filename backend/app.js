@@ -2,6 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import { sequelize } from "./datasource.js";
 import session from "express-session";
+import { userRouter } from "./routers/user_router.js";
+
 
 export const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
