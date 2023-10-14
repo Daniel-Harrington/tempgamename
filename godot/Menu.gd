@@ -3,7 +3,7 @@ extends Control # Change this to match your scene structure
 var email = ""
 var username = ""
 var password = ""
-
+	
 
 func _ready():
 	# Get a reference to the AnimationPlayer

@@ -16,14 +16,14 @@ func _ready():
 #	pass
 
 
-func _on_TweenDown_tween_started(object, key):
-	var tween = get_node("TweenOpacity")
-	tween.interpolate_property(self, "modulate", modulate, Color(0,0,0,0), 0.8,Tween.TRANS_BACK , Tween.EASE_IN_OUT)
+func _on_Btn_Signup_pressed():
+	var tween = get_node("TweenbackOpacity")
+	if get_parent().get_node("Btn_Signup").text == "Signup":
+		tween.interpolate_property(self, "modulate", modulate, Color(1,1,1,1), 0.8,Tween.TRANS_BACK , Tween.EASE_IN_OUT)
 	tween.start()
 
 
 func _on_Btn_Goback_pressed():
-	var tween = get_node("TweenOpacity")
+	var tween = get_node("TweenbackOpacity")
 	tween.interpolate_property(self, "modulate", modulate, Color(1,1,1,1), 0.8,Tween.TRANS_BACK , Tween.EASE_IN_OUT)
 	tween.start()
-

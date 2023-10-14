@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Btn_Battle.gd" type="Script" id=1]
 [ext_resource path="res://Fumiko.png" type="Texture" id=2]
@@ -6,22 +6,27 @@
 [ext_resource path="res://Assets/BubbleSimple.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=5]
 [ext_resource path="res://Fightbtn.png" type="Texture" id=6]
+[ext_resource path="res://moneybag.png" type="Texture" id=7]
+[ext_resource path="res://Fonts/PixelifySans-VariableFont_wght.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Scenes/HookDialog.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 8 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Forward_Run"
-length = 0.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BubbleSimple/Fumiko:frame")
+tracks/0/path = NodePath("Fumiko:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.128052, 0.250238, 0.375868 ),
+"times": PoolRealArray( 0, 0.311901, 0.596485, 0.852852 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 76, 77, 76, 75 ]
+"values": [ 74, 75, 76, 75 ]
 }
 
 [node name="Main" type="Node2D"]
@@ -37,24 +42,25 @@ script = ExtResource( 1 )
 
 [node name="Lbl_Name" type="Label" parent="."]
 modulate = Color( 0.0235294, 0, 0, 1 )
-margin_left = 472.5
-margin_top = 263.5
-margin_right = 553.5
-margin_bottom = 277.5
+margin_left = 465.0
+margin_top = 241.0
+margin_right = 560.0
+margin_bottom = 261.0
+custom_fonts/font = SubResource( 2 )
 text = "Player Name"
 
+[node name="Fumiko" type="Sprite" parent="."]
+position = Vector2( 500, 352 )
+scale = Vector2( 5.85352, 5.85352 )
+texture = ExtResource( 2 )
+hframes = 37
+vframes = 8
+frame = 75
+
 [node name="BubbleSimple" type="Sprite" parent="."]
-position = Vector2( 506.5, 328.5 )
+position = Vector2( 506.5, 327.5 )
 scale = Vector2( 0.638672, 0.638672 )
 texture = ExtResource( 4 )
-
-[node name="Fumiko" type="Sprite" parent="BubbleSimple"]
-position = Vector2( 4.6972, 39.1274 )
-scale = Vector2( 9.16514, 9.16514 )
-texture = ExtResource( 2 )
-hframes = 36
-vframes = 8
-frame = 76
 
 [node name="FumikoRunForward" type="AnimationPlayer" parent="."]
 anims/Forward_Run = SubResource( 1 )
@@ -68,4 +74,44 @@ position = Vector2( 511, 320 )
 scale = Vector2( 0.566146, 0.566146 )
 texture = ExtResource( 3 )
 
+[node name="Control" type="Control" parent="."]
+margin_left = 1.0
+margin_right = 41.0
+margin_bottom = 40.0
+
+[node name="Btn_NewUser" type="TextureButton" parent="Control"]
+margin_left = -44.0
+margin_top = 84.0
+margin_right = 456.0
+margin_bottom = 584.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 7 )
+
+[node name="Lbl_NewUser" type="Label" parent="Control"]
+modulate = Color( 0.0235294, 0, 0, 1 )
+margin_left = 22.0
+margin_top = 142.0
+margin_right = 117.0
+margin_bottom = 185.0
+custom_fonts/font = SubResource( 2 )
+text = "90% off New
+ User Deal!"
+
+[node name="Popup" type="Popup" parent="Control"]
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HookDialog" type="AcceptDialog" parent="Control/Popup"]
+visible = true
+margin_left = 11.0
+margin_top = 34.0
+margin_right = 269.0
+margin_bottom = 143.0
+window_title = "The Hook!"
+dialog_text = "Companies offer the best deals to new players to break the ice, once a player has spent any money they are much more likely to spend again!"
+dialog_autowrap = true
+script = ExtResource( 9 )
+
 [connection signal="pressed" from="Btn_Battle" to="Btn_Battle" method="_on_Btn_Battle_pressed"]
+[connection signal="pressed" from="Control/Btn_NewUser" to="Control/Popup/HookDialog" method="_on_Btn_NewUser_pressed"]

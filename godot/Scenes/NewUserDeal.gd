@@ -1,0 +1,18 @@
+extends Label
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var t = Theme.new()
+	t.set_color("font_color", "Label", Color(255, 255,  255))
+
+	set_theme(t)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
