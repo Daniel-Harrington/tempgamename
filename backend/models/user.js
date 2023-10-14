@@ -11,7 +11,7 @@ export const User = sequelize.define("User", {
     allowNull: false,
   },
   moneySpent: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.FLOAT,
     allowNull: false,
   },
   diamonds: {

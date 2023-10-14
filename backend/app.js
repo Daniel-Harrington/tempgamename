@@ -3,6 +3,9 @@ import bodyParser from "body-parser";
 import { sequelize } from "./datasource.js";
 import session from "express-session";
 import { userRouter } from "./routers/user_router.js";
+import { characterRouter } from "./routers/character_router.js";
+import { inventoryRouter } from "./routers/inventory_router.js";
+import { itemRouter } from "./routers/item_router.js";
 
 
 export const app = express();
@@ -32,7 +35,7 @@ app.use(function (req, res, next) {
 });
 
 app.use("/api/characters", characterRouter);
-app.use("/api/inventorys", InventoryRouter);
+app.use("/api/inventorys", inventoryRouter);
 app.use("/api/users", userRouter);
 app.use("/api/items", itemRouter);
 
