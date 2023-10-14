@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Fumiko.png" type="Texture" id=1]
 [ext_resource path="res://PasswordField.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://EmailField.gd" type="Script" id=10]
 [ext_resource path="res://Btn_Login.gd" type="Script" id=11]
 [ext_resource path="res://UsernameField.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/Registration.gd" type="Script" id=13]
 
 [sub_resource type="Theme" id=2]
 
@@ -70,7 +71,6 @@ texture = ExtResource( 6 )
 
 [node name="bgStatic" type="Sprite" parent="ParallaxBackground/Trees3/Sprite3"]
 position = Vector2( 0.306152, -0.13311 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 8 )
 
 [node name="Fumiko" type="Sprite" parent="."]
@@ -133,11 +133,16 @@ script = ExtResource( 9 )
 
 [node name="TweenDown" type="Tween" parent="Btn_Signup"]
 
+[node name="Registration" type="HTTPRequest" parent="."]
+script = ExtResource( 13 )
+
 [connection signal="focus_entered" from="Username" to="Username" method="_on_Username_focus_entered"]
 [connection signal="focus_entered" from="Password" to="Password" method="_on_Password_focus_entered"]
 [connection signal="focus_entered" from="Email" to="Email" method="_on_Email_focus_entered"]
 [connection signal="pressed" from="Btn_Login" to="." method="_on_Btn_Login_pressed"]
 [connection signal="tween_completed" from="Btn_Login/TweenOpacity" to="Email" method="_on_TweenOpacity_tween_completed"]
+[connection signal="pressed" from="Btn_Signup" to="." method="_on_Btn_Signup_pressed"]
 [connection signal="tween_completed" from="Btn_Signup/TweenDown" to="." method="_on_TweenDown_tween_completed"]
 [connection signal="tween_completed" from="Btn_Signup/TweenDown" to="Btn_Signup" method="_on_TweenDown_tween_completed"]
 [connection signal="tween_started" from="Btn_Signup/TweenDown" to="Btn_Login" method="_on_TweenDown_tween_started"]
+[connection signal="request_completed" from="Registration" to="." method="_on_HTTPRequest_request_completed"]

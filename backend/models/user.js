@@ -10,6 +10,12 @@ export const User = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  moneySpent: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+  },
+  diamonds: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 });
-
-export default User;
